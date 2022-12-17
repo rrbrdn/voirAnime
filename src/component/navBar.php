@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-// require "../function/function-deco.php";
 if (!empty($_SESSION['roleUser'])) {
     if ($_SESSION['roleUser'] == 'admin') {
 
