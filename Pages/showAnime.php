@@ -5,6 +5,7 @@ $req->execute();
 $myAnime = $req->fetchAll(PDO::FETCH_ASSOC);
 $req->closeCursor();
 $idAnime = $_POST['titre'];
+
 ?>
 
 <!DOCTYPE html>
@@ -22,10 +23,9 @@ $idAnime = $_POST['titre'];
 
 <body>
 
-  <?php include './../src/component/navBar.php'; ?>
-  <?php include './../src/component/modal-connect.php'; 
-    echo connect('./../src/component/connexion.php');
-  
+  <?php include './../src/component/navBar.php'; 
+   include './../src/component/modal-connect.php';
+  echo connect('./../src/component/connexion.php');
   ?>
 
 
@@ -44,7 +44,11 @@ $idAnime = $_POST['titre'];
         <div class='p-3'>
           <h4><?= $anime['titre'] ?></h4>
           <p><?= $anime['descri'] ?></p>
-          <button type="button" class="btn btn-secondary btn-sm">Ajouter à ma collection</button>
+          <form action="./mon-compte.php" method="post">
+            <button type="submit" class="btn btn-secondary btn-sm">Ajouter à ma collection
+              <input hidden name="titre" value="<?= $anime['titre'] ?>">
+            </button>
+          </form>
         </div>
         <div class='d-flex justify-content-center p-3'>
 

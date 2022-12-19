@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+
 if (!empty($_SESSION['roleUser'])) {
     if ($_SESSION['roleUser'] == 'admin') {
 
