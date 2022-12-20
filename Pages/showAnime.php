@@ -1,4 +1,5 @@
 <?php
+
 $bdd = new PDO('mysql:host=localhost;dbname=tp_crud', "root", "");
 $req = $bdd->prepare("SELECT * FROM anime");
 $req->execute();
@@ -46,8 +47,9 @@ $idAnime = $_POST['titre'];
           <p><?= $anime['descri'] ?></p>
           <form action="./mon-compte.php" method="post">
             <button type="submit" class="btn btn-secondary btn-sm">Ajouter à ma collection
-              <input hidden name="titre" value="<?= $anime['titre'] ?>">
-            </button>
+              <input hidden name="idAnime" value="<?= $anime['id'] ?>">
+              <input hidden name="idUser" value="<?= $_SESSION['id'] ?>">
+            </button> 
           </form>
         </div>
         <div class='d-flex justify-content-center p-3'>
@@ -63,7 +65,12 @@ $idAnime = $_POST['titre'];
 
   <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
   <script src="./../asset/js/connect.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

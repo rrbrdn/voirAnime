@@ -11,7 +11,8 @@ session_start();
         while($connect = $connectTest->fetch()){
             if($_POST['email'] == $connect['email'] && $_POST['pdw'] == $connect['pdw']){
                 echo '<script>alert("Connexion réussie")</script>';
-                $_SESSION['email'] =$connect['email'];
+                $_SESSION['id'] = $connect['id'];
+                $_SESSION['email'] = $connect['email'];
                 $_SESSION['pdw'] = $connect['pdw'];
                 $_SESSION['roleUser'] = $connect['roleUser'];
                 $_SESSION['username'] = $connect['username'];
