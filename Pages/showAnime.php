@@ -1,5 +1,4 @@
 <?php
-
 $bdd = new PDO('mysql:host=localhost;dbname=tp_crud', "root", "");
 $req = $bdd->prepare("SELECT * FROM anime");
 $req->execute();
@@ -48,7 +47,9 @@ $idAnime = $_POST['titre'];
           <form action="./mon-compte.php" method="post">
             <button type="submit" class="btn btn-secondary btn-sm">Ajouter à ma collection
               <input hidden name="idAnime" value="<?= $anime['id'] ?>">
-              <input hidden name="idUser" value="<?= $_SESSION['id'] ?>">
+              <?php if (!empty($_SESSION['id'])) { ?>
+                <input hidden name="idUser" value="<?= $_SESSION['id'] ?>">
+              <?php }?>
             </button> 
           </form>
         </div>

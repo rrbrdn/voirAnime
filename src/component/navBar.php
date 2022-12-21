@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+define("URL","http://localhost/voiranime/");
 
 if (!empty($_SESSION['roleUser'])) {
     if ($_SESSION['roleUser'] == 'admin') {
@@ -13,24 +14,30 @@ if (!empty($_SESSION['roleUser'])) {
                 </li>";
     } elseif ($_SESSION['roleUser'] == 'user') {
         $nav = "
-            <div class='d-flex justify-content-between'>
-                <li class='nav-item d-flex w-25'>
-                    <a class='nav-link' href='./Pages/mon-compte.php'> ". $_SESSION['username'] ."</a>
-                    <div class='w-25 d-flex justify-content-between'>
-                        <img class='rounded-circle' width='50' src='./asset/img/".$_SESSION['img_profil']."'>
-                    </div>
-                </li>
-                <li class='nav-item'>
-                    <a class='nav-link' href='./src/component/deco.php'>deco</a>
-                </li>
-            </div>";    
+  
+        
+        <li class='nav-item dropdown'>
+          <a class='nav-link dropdown-toggle' data-bs-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'> ". $_SESSION['username'] ." 
+            <img class='rounded-circle' width='50' src='".URL."./asset/img/".$_SESSION['img_profil']."'></a>
+          <div class='dropdown-menu'>
+            <form action='".URL."./Pages/mon-compte.php' method='post'>
+                <a class='dropdown-item' href='#'>Mon compte<input hidden name='idUser' value="   . $_SESSION ['id'] .">
+                <button class='btn' type='submit'></button>
+                </a>
+            </form>
+            <div class='dropdown-divider'></div>
+            <a class='dropdown-item' href='".URL."./src/component/deco.php''>Deconnexion</a>
+          </div>
+        </li>
+      
+                "; 
     }
 } else {
-    $nav = "<li class='nav-item'>
+    $nav = "    <li class='nav-item'>
                     <a class='nav-link' id='connect' href='#'>Connexion</a>
                 </li>
                 <li class='nav-item'>
-                    <a class='nav-link' id='inscription' href='./src/component/inscription.php'>Inscription</a>
+                    <a class='nav-link' id='inscription' href='".URL."./src/component/inscription.php'>Inscription</a>
                 </li>";
 }
 
@@ -51,9 +58,7 @@ if (!empty($_SESSION['roleUser'])) {
                         <span class="visually-hidden">(current)</span>
                     </a>
                 </li>
-                <div class="d-flex">
-                    <?= $nav ?>
-                </div>
+                <?= $nav ?>
             </ul>
             <form class="d-flex" method="GET">
                 <input class="form-control me-sm-2" type="search" name="search" placeholder="Search" autocomplete="off">
@@ -63,3 +68,23 @@ if (!empty($_SESSION['roleUser'])) {
     </div>
 </nav>
 
+<!-- <div class='d-flex justify-content-between'>
+        <li class='nav-item dropdown d-flex'>
+            <a class='nav-link dropdown-toggle' data-bs-toggle='dropdown' href='#'              role='button' aria-haspopup='true' aria-expanded='false'>
+                ". $_SESSION['username'] ." 
+                <img class='rounded-circle' width='50' src='".URL."./asset/img/".$_SESSION['img_profil']."'>
+            </a>
+        </li>
+            <div class='dropdown-menu show' data-bs-popper='static'>
+                <form action='".URL."./Pages/mon-compte.php' method='post'>
+                    <a class='dropdown-item' href='#'> 
+                        <input hidden name='idUser' value=". $_SESSION['id'] .">
+                        <button class='btn' type='submit'>Mon compte</button>
+                    </a>    
+                </form>
+                <li class='nav-item'>
+                    <a class='dropdown-item' href='".URL."./src/component/deco.php'>deco</a>
+                </li>
+            </div>
+        
+    </div> -->
