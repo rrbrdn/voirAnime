@@ -44,10 +44,15 @@ $idAnime = $_POST['titre'];
         <div class='p-3'>
           <h4><?= $anime['titre'] ?></h4>
           <p><?= $anime['descri'] ?></p>
-          <form action="./mon-compte.php" method="post">
+           <?php if (!empty($_SESSION['roleUser'])) {
+                    // header("Location: http://localhost/voiranime/index.php"); ?>
+              <form action="./mon-compte.php" method="post"> <?php }?>
             <button type="submit" class="btn btn-secondary btn-sm">Ajouter à ma collection
               <input hidden name="idAnime" value="<?= $anime['id'] ?>">
-              <?php if (!empty($_SESSION['id'])) { ?>
+              <?php  if (!empty($_SESSION['id'])) { 
+                     
+                      
+                ?>
                 <input hidden name="idUser" value="<?= $_SESSION['id'] ?>">
               <?php }?>
             </button> 

@@ -7,10 +7,10 @@ if (!empty($_SESSION['roleUser'])) {
     if ($_SESSION['roleUser'] == 'admin') {
 
         $nav = "<li class='nav-item'>
-                    <a class='nav-link' href='./Pages/admin/exo7.php'>admin</a>
+                    <a class='nav-link' href='".URL."./Pages/admin/exo7.php'>admin</a>
                 </li> 
                 <li class='nav-item'>
-                    <a class='nav-link' href='./src/component/deco.php'>deco</a>
+                    <a class='nav-link' href='".URL."./src/component/deco.php'>deco</a>
                 </li>";
     } elseif ($_SESSION['roleUser'] == 'user') {
         $nav = "
@@ -21,7 +21,7 @@ if (!empty($_SESSION['roleUser'])) {
             <img class='rounded-circle' width='50' src='".URL."./asset/img/".$_SESSION['img_profil']."'></a>
           <div class='dropdown-menu'>
             <form action='".URL."./Pages/mon-compte.php' method='post'>
-                <a class='dropdown-item' href='#'>Mon compte<input hidden name='idUser' value="   . $_SESSION ['id'] .">
+                <a class='dropdown-item'>Mon compte<input hidden name='idUser' value="   . $_SESSION ['id'] .">
                 <button class='btn' type='submit'></button>
                 </a>
             </form>
