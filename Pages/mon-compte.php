@@ -18,12 +18,14 @@ $stmt->closeCursor();
 
 }
 
+$id_user = $_POST['idUser'];
 
-
-$req = $bdd->prepare("SELECT * FROM anime INNER JOIN favoris ON anime.id = favoris.id_anime");
-$req->execute();
-$myFavoris = $req->fetchAll(PDO::FETCH_ASSOC);
-$req->closeCursor();
+$req = "SELECT * FROM anime INNER JOIN favoris ON anime.id = favoris.id_anime WHERE id_user = :id";
+$stmt = $bdd->prepare($req);
+$stmt->bindValue(":id", $id_user, PDO::PARAM_INT);
+$result = $stmt->execute();
+$myFavoris = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmt->closeCursor();
 
 
 
@@ -49,8 +51,8 @@ include './../src/component/navBar.php';
 include './../src/component/modal-connect.php';
 echo connect('./../src/component/connexion.php');
 
-var_dump($_POST);
-var_dump($_SESSION);
+// var_dump($_POST);
+// var_dump($_SESSION);
 
 
 ?>
