@@ -11,3 +11,4 @@ closeModal.addEventListener('click', () => {
 })
 
 
+console.log("hello");

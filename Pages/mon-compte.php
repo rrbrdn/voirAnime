@@ -23,7 +23,7 @@ $req->execute();
 $myFavoris = $req->fetchAll(PDO::FETCH_ASSOC);
 $req->closeCursor();
 
-// define("URL","http://localhost/voiranime/");
+var_dump($_POST);
 
 ?>
 

@@ -15,7 +15,6 @@ if (!empty($_SESSION['roleUser'])) {
     } elseif ($_SESSION['roleUser'] == 'user') {
         $nav = "
   
-        
         <li class='nav-item dropdown'>
           <a class='nav-link dropdown-toggle' data-bs-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'> ". $_SESSION['username'] ." 
             <img class='rounded-circle' width='50' src='".URL."./asset/img/".$_SESSION['img_profil']."'></a>
@@ -26,10 +25,14 @@ if (!empty($_SESSION['roleUser'])) {
                 </a>
             </form>
             <div class='dropdown-divider'></div>
-            <a class='dropdown-item' href='".URL."./src/component/deco.php''>Deconnexion</a>
+            <a class='dropdown-item' href='".URL."./src/component/deco.php'>Deconnexion</a>
+            <form action='".URL."./src/component/delete-compte.php' method='post'>
+            <a class='dropdown-item'>Supprimer<input hidden name='idUser' value="   . $_SESSION ['id'] .">
+            <button class='btn' type='submit'></button>
+            </a>
+        </form>
           </div>
-        </li>
-      
+        </li>  
                 "; 
     }
 } else {

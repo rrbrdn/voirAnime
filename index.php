@@ -4,6 +4,16 @@ $req = $bdd->prepare("SELECT * FROM anime");
 $req->execute();
 $myAnime = $req->fetchAll(PDO::FETCH_ASSOC);
 $req->closeCursor();
+
+
+
+
+$req = $bdd->prepare("SELECT * FROM anime WHERE id IN (1,48,49)");
+$req->execute();
+$bigs3 = $req->fetchAll(PDO::FETCH_ASSOC);
+$req->closeCursor();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -32,33 +42,17 @@ $req->closeCursor();
         <h2><strong>Le Big 3</strong></h2>
 
         <div class="cards">
-            <form action="./Pages/showAnime.php" method="post">
-                <button type="submit">
-                    <figure class="card">
-                        <input hidden type="text" name="titre" value="Naruto">
-                        <img src="./asset/img/naruto.jpg" />
-                        <figcaption class="bg-light text-black">Naruto</figcaption>
-                    </figure>
-                </button>
-            </form>
-            <form action="./Pages/showAnime.php" method="post">
-                <button type="submit">
-                    <figure class="card">
-                        <input hidden type="text" name="titre" value="Bleach">
-                        <img src="./asset/img/636c448b51ba1bleach.jpg" />
-                        <figcaption class="bg-light text-black">Bleach</figcaption>
-                    </figure>
-                </button>
-            </form>
-            <form action="./Pages/showAnime.php" method="post">
-                <button type="submit">
-                    <figure class="card">
-                        <input hidden type="text" name="titre" value="One piece">
-                        <img src="./asset/img/636c46e8adb4fone-piece.jpg" />
-                        <figcaption class="bg-light text-black">One piece</figcaption>
-                    </figure>
-                </button>
-            </form>
+            <?php foreach ($bigs3 as $big3) : ?>
+                <form action="./Pages/showAnime.php" method="post">
+                    <button type="submit">
+                        <figure class="card">
+                            <input hidden type="text" name="titre" value="<?= $big3['titre'] ?>">
+                            <img src="./asset/img/<?= $big3['img'] ?>" />
+                            <figcaption class="bg-light text-black"><?= $big3['titre'] ?></figcaption>
+                        </figure>
+                    </button>
+                </form>
+             <?php endforeach; ?>
         </div>
     </div>
 
