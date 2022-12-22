@@ -18,12 +18,14 @@ $stmt->closeCursor();
 
 }
 
+
+
 $req = $bdd->prepare("SELECT * FROM anime INNER JOIN favoris ON anime.id = favoris.id_anime");
 $req->execute();
 $myFavoris = $req->fetchAll(PDO::FETCH_ASSOC);
 $req->closeCursor();
 
-var_dump($_POST);
+
 
 ?>
 
@@ -47,16 +49,20 @@ include './../src/component/navBar.php';
 include './../src/component/modal-connect.php';
 echo connect('./../src/component/connexion.php');
 
-// var_dump($_POST);
+var_dump($_POST);
+var_dump($_SESSION);
+
 
 ?>
 
+<!-- <img src="./../asset/img/<?= $_SESSION['img_profil'] ?>" /> -->
 
 
     <div class="wrapper">
         <h2><strong>Mes favoris</strong></h2>
         <div class="cards">
             <?php foreach ($myFavoris as $favoris) : ?>
+                <?php if ($_SESSION['id'] == $_POST['idUser']) { ?>
                 <form action="<?= URL ?>./Pages/showAnime.php" method="post">
                     <button type="submit">
                         <figure class="card">
@@ -66,6 +72,7 @@ echo connect('./../src/component/connexion.php');
                         </figure>
                     </button>
                 </form>
+                <?php } ?>
             <?php endforeach; ?>
         </div>
     </div>
@@ -80,3 +87,6 @@ echo connect('./../src/component/connexion.php');
     </script>
 </body>
 </html>
+
+
+

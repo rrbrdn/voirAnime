@@ -27,7 +27,7 @@ if (!empty($_SESSION['roleUser'])) {
             <div class='dropdown-divider'></div>
             <a class='dropdown-item' href='".URL."./src/component/deco.php'>Deconnexion</a>
             <form action='".URL."./src/component/delete-compte.php' method='post'>
-            <a class='dropdown-item'>Supprimer<input hidden name='idUser' value="   . $_SESSION ['id'] .">
+            <a class='dropdown-item'>Supprimer<input hidden name='idUser' value=" . $_SESSION ['id'] .">
             <button class='btn' type='submit'></button>
             </a>
         </form>
