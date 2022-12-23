@@ -47,6 +47,10 @@ if (isset($_POST['submit']) && !empty($_POST['username']) && !empty($_POST['emai
                     $stmt->bindValue(":img_profil", $file_name_new, PDO::PARAM_STR);
                     $result = $stmt->execute();
                     $stmt->closeCursor();
+
+                    if ($result) {
+                        header('Location: ./../../index.php');
+                    }
                 } else {
                     echo 'File upload failed - CHMOD/Folder doesn\'t exist?';
                 }
@@ -84,7 +88,7 @@ if (isset($_POST['submit']) && !empty($_POST['username']) && !empty($_POST['emai
 
             <div class="card-header d-flex">
                 <div class="p-2 flex-grow-1">
-                    Anime
+                    Inscription
                 </div>
                 <div class="p-2">
                     <a href="./../../index.php"><button type="button" class="btn btn-outline-dark btn-sm">back</button></a>

@@ -20,7 +20,7 @@ if (!empty($_SESSION['roleUser'])) {
             <img class='rounded-circle' width='50' src='".URL."./asset/img/".$_SESSION['img_profil']."'></a>
           <div class='dropdown-menu'>
             <form action='".URL."./Pages/mon-compte.php' method='post'>
-                <a class='dropdown-item'>Mon compte<input hidden name='idUser' value="   . $_SESSION ['id'] .">
+                <a class='dropdown-item'>Mon compte<input hidden name='idUser' value="  . $_SESSION ['id'] .">
                 <button class='btn' type='submit'></button>
                 </a>
             </form>

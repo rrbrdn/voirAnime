@@ -1,3 +1,10 @@
+.hello {
+  height: 10vh;
+}
+
+
+
+
 .abs,
 h2:after,
 .cards .card figcaption,
@@ -225,7 +232,7 @@ button {
     width: 100vw;
     height: 100vh;
 }
-.modal2 {
+/* .modal2 {
   display: flex;
-}
+} */
 

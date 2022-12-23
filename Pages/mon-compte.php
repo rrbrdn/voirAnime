@@ -16,6 +16,9 @@ $stmt->bindValue(":id_anime", $id_anime, PDO::PARAM_STR);
 $result = $stmt->execute();
 $stmt->closeCursor();
 
+if ($result) {
+    header('Location: ./../index.php');
+}
 }
 
 $id_user = $_POST['idUser'];
@@ -31,8 +34,6 @@ $stmt->closeCursor();
 
 ?>
 
-
- 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -57,10 +58,10 @@ echo connect('./../src/component/connexion.php');
 
 ?>
 
-<!-- <img src="./../asset/img/<?= $_SESSION['img_profil'] ?>" /> -->
 
 
-    <div class="wrapper">
+<div class="wrapper">
+        <!-- <img src="./../asset/img/<?= $_SESSION['img_profil'] ?>" /> -->
         <h2><strong>Mes favoris</strong></h2>
         <div class="cards">
             <?php foreach ($myFavoris as $favoris) : ?>
