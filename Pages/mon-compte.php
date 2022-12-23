@@ -36,6 +36,7 @@ $stmt->closeCursor();
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,9 +45,10 @@ $stmt->closeCursor();
     <link rel="stylesheet" href="./../asset/css/style.css">
     <title>Document</title>
 </head>
+
 <body>
 
-<?php 
+    <?php 
 
 include './../src/component/navBar.php'; 
 include './../src/component/modal-connect.php';
@@ -60,27 +62,38 @@ echo connect('./../src/component/connexion.php');
 
 
 
-<div class="wrapper">
+    <div class="wrapper">
         <!-- <img src="./../asset/img/<?= $_SESSION['img_profil'] ?>" /> -->
         <h2><strong>Mes favoris</strong></h2>
         <div class="cards">
             <?php foreach ($myFavoris as $favoris) : ?>
-                <?php if ($_SESSION['id'] == $_POST['idUser']) { ?>
-                <form action="<?= URL ?>./Pages/showAnime.php" method="post">
-                    <button type="submit">
-                        <figure class="card">
-                            <input hidden type="text" name="titre" value="<?= $favoris['titre'] ?>">
-                            <img src="./../asset/img/<?= $favoris['img'] ?>" />
-                            <figcaption class="bg-light text-black"><?= $favoris['titre'] ?></figcaption>
-                        </figure>
-                    </button>
-                </form>
-                <?php } ?>
+            <?php if ($_SESSION['id'] == $_POST['idUser']) { ?>
+            <form action="<?= URL ?>./Pages/showAnime.php" method="post">
+                <button type="submit">
+                    <figure class="card">
+                        <input hidden type="text" name="titre" value="<?= $favoris['titre'] ?>">
+                        <img src="./../asset/img/<?= $favoris['img'] ?>" />
+                        <figcaption class="bg-light text-black"><?= $favoris['titre'] ?></figcaption>
+                    </figure>
+                </button>
+            </form>
+
+            <form action="./../src/component/delete-favoris.php" method="post" onSubmit="return confirm('êtes-vous certain ?')">
+                <input hidden type="text" name="animeID" value="<?= $favoris['id']?>">
+                <button class="btn text-light" type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                </button>
+            </form>
+            <?php } ?>
             <?php endforeach; ?>
         </div>
     </div>
 
-    
+
     <script src="./../asset/js/connect.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
@@ -89,7 +102,5 @@ echo connect('./../src/component/connexion.php');
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous">
     </script>
 </body>
+
 </html>
-
-
-
