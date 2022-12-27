@@ -70,24 +70,3 @@ if (!empty($_SESSION['roleUser'])) {
         </div>
     </div>
 </nav>
-
-<!-- <div class='d-flex justify-content-between'>
-        <li class='nav-item dropdown d-flex'>
-            <a class='nav-link dropdown-toggle' data-bs-toggle='dropdown' href='#'              role='button' aria-haspopup='true' aria-expanded='false'>
-                ". $_SESSION['username'] ." 
-                <img class='rounded-circle' width='50' src='".URL."./asset/img/".$_SESSION['img_profil']."'>
-            </a>
-        </li>
-            <div class='dropdown-menu show' data-bs-popper='static'>
-                <form action='".URL."./Pages/mon-compte.php' method='post'>
-                    <a class='dropdown-item' href='#'> 
-                        <input hidden name='idUser' value=". $_SESSION['id'] .">
-                        <button class='btn' type='submit'>Mon compte</button>
-                    </a>    
-                </form>
-                <li class='nav-item'>
-                    <a class='dropdown-item' href='".URL."./src/component/deco.php'>deco</a>
-                </li>
-            </div>
-        
-    </div> -->

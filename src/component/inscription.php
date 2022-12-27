@@ -78,13 +78,14 @@ if (isset($_POST['submit']) && !empty($_POST['username']) && !empty($_POST['emai
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../../asset/css/lux.css">
+    <link rel="stylesheet" href="./../../asset/css/inscription.css">
     <title>Document</title>
 </head>
 
 <body>
-    <div class="container my-5">
+    <div class="d-flex">
 
-        <div class="card border-dark mb-3">
+        <div id ="form" class="container text-white card col-6">
 
             <div class="card-header d-flex">
                 <div class="p-2 flex-grow-1">
@@ -97,30 +98,34 @@ if (isset($_POST['submit']) && !empty($_POST['username']) && !empty($_POST['emai
 
             <form action="inscription.php" method="post" enctype="multipart/form-data">
                 <fieldset>
-                    <div class="form-group p-3">
+                    <div class="form-group p-1">
                         <label class="col-form-label mt-4" for="inputDefault">Nom d'utilisateur</label>
                         <input type="text" class="form-control" name="username" autocomplete="off">
                     </div>
-                    <div class="form-group p-3">
+                    <div class="form-group p-1">
                         <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                             placeholder="Enter email" name="email" autocomplete="off">
                     </div>
-                    <div class="form-group p-3">
+                    <div class="form-group p-1">
                         <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
                             name="pdw" autocomplete="off">
                     </div>
-                    <div class="form-group p-3">
+                    <div class="form-group p-1">
                         <label for="formFile" class="form-label mt-4">Selectionnez une image</label>
                         <input class="form-control" type="file" id="fileToUpload" name="img">
                     </div>
                     <hr>
-                    <div class="d-flex justify-content-end p-3">
+                    <div class="d-flex justify-content-end p-1">
                         <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                     </div>
                 </fieldset>
             </form>
+        </div>
+
+        <div>
+            <img class="col-6" src="./../../asset/img/background.jpg" style="width: 100%; height:100%;">
         </div>
 
     </div>
