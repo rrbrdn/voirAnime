@@ -78,57 +78,51 @@ if (isset($_POST['submit']) && !empty($_POST['username']) && !empty($_POST['emai
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../../asset/css/lux.css">
-    <link rel="stylesheet" href="./../../asset/css/inscription.css">
+    <link rel="stylesheet" href="./../../asset/css/inscri.css">
     <title>Document</title>
 </head>
 
 <body>
-    <div class="d-flex">
 
-        <div id ="form" class="container text-white card col-6">
 
-            <div class="card-header d-flex">
-                <div class="p-2 flex-grow-1">
-                    Inscription
-                </div>
-                <div class="p-2">
-                    <a href="./../../index.php"><button type="button" class="btn btn-outline-dark btn-sm">back</button></a>
-                </div>
+        <nav class="navbar navbar-expand-lg" id="nav">
+            <div class="navbar-center mx-auto">
+                <a class="navbar-brand" id="titre" href="./../../index.php">VoirAnime</a>
             </div>
+        </nav>
+
+        <div class="container text-white d-flex justify-content-center mt-3">
 
             <form action="inscription.php" method="post" enctype="multipart/form-data">
-                <fieldset>
+                <fieldset class="">
                     <div class="form-group p-1">
-                        <label class="col-form-label mt-4" for="inputDefault">Nom d'utilisateur</label>
-                        <input type="text" class="form-control" name="username" autocomplete="off">
-                    </div>
-                    <div class="form-group p-1">
-                        <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Enter email" name="email" autocomplete="off">
-                    </div>
-                    <div class="form-group p-1">
-                        <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
-                            name="pdw" autocomplete="off">
-                    </div>
-                    <div class="form-group p-1">
-                        <label for="formFile" class="form-label mt-4">Selectionnez une image</label>
-                        <input class="form-control" type="file" id="fileToUpload" name="img">
+                        <input type="text" class="form-control rounded-3 bg-transparent text-white border-bottom-2" name="username" placeholder="Nom d'utilisateur" autocomplete="off">
                     </div>
                     <hr>
-                    <div class="d-flex justify-content-end p-1">
-                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                    <div class="form-group p-1">
+                        <input type="email" class="form-control rounded-3 bg-transparent text-white border-bottom-2" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Email" name="email" autocomplete="off">
+                    </div>
+                    <hr>
+                    <div class="form-group p-1">
+                        <input type="password" class="form-control rounded-3 bg-transparent text-white border-bottom-2" id="exampleInputPassword1" placeholder="Mot de passe"
+                            name="pdw" autocomplete="off">
+                    </div>
+                    <hr>
+                    <div class="form-group p-1">
+                        <input class="form-control rounded-3 bg-transparent text-white border-bottom-2" type="file" id="fileToUpload" name="img">
+                        <small class="form-text text-muted">Selectionnez une image de profil</small>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-center p-1 ">
+                        <button type="submit" id ="btn" class="btn rounded-3 w-75" name="submit">Crée un compte</button>
                     </div>
                 </fieldset>
             </form>
+        
         </div>
 
-        <div>
-            <img class="col-6" src="./../../asset/img/background.jpg" style="width: 100%; height:100%;">
-        </div>
 
-    </div>
 
 </body>
 

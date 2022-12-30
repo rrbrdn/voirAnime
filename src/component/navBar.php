@@ -48,7 +48,7 @@ if (!empty($_SESSION['roleUser'])) {
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav">
     <div class="container-fluid">
         <a class="navbar-brand" href="./../../voiranime/index.php">VoirAnime</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,7 +63,7 @@ if (!empty($_SESSION['roleUser'])) {
                 </li>
                 <?= $nav ?>
             </ul>
-            <form class="d-flex" method="GET">
+            <form class="d-flex" method="POST" action="./index.php">
                 <input class="form-control me-sm-2" type="search" name="search" placeholder="Search" autocomplete="off">
                 <button class="btn btn-secondary my-2 my-sm-0" type="submit" name="envoyer">Search</button>
             </form>
