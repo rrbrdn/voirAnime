@@ -32,7 +32,7 @@ var_dump($anime[0]['titre']);
     <title>Document</title>
 </head>
 <body>
-<div class="container my-5">
+    <div class="container my-5">
 
         <div class="card border-dark mb-3">
 
