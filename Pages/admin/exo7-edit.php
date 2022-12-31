@@ -20,6 +20,7 @@ $req->closeCursor();
 var_dump($anime);
 var_dump($anime[0]['titre']);
 
+
 ?>
 
 <!DOCTYPE html>

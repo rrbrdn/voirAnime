@@ -47,8 +47,7 @@ $req->closeCursor();
       if (!empty($_POST['search'])) {
         
         $search = $_POST['search'];
-
-
+        
         $sql = "SELECT * FROM anime WHERE titre LIKE :search";
         $stmt = $bdd->prepare($sql);
         $stmt->execute(['search' => "%$search%"]);
