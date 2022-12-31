@@ -1,7 +1,9 @@
-
-#nav {
-  
+#carouselWithControls {
+  width: 45em;
 }
+
+
+
 
 
 .abs,
@@ -57,7 +59,7 @@ h2 span {
   vertical-align: middle;
 }
 .wrapper {
-  background: #24282f;
+  background: black;
   font-family: 'Alegreya Sans';
 }
 .wrapper {
@@ -71,7 +73,7 @@ h2 {
 }
 h2 strong {
   z-index: 2;
-  background: #24282f;
+  background: black;
   padding: 4px 8px;
 }
 h2 span {
@@ -209,7 +211,7 @@ h2:after {
 }
 
 button {
-    background: none;
+  background: none;
 	color: inherit;
 	border: none;
 	padding: 0;

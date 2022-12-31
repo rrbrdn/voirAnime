@@ -43,6 +43,7 @@ $stmt->closeCursor();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../asset/css/lux.css">
     <link rel="stylesheet" href="./../asset/css/style.css">
+    <link rel="stylesheet" href="./../asset/css/base.css">
     <title>Document</title>
 </head>
 
@@ -73,7 +74,6 @@ echo connect('./../src/component/connexion.php');
                     <figure class="card">
                         <input hidden type="text" name="titre" value="<?= $favoris['titre'] ?>">
                         <img src="./../asset/img/<?= $favoris['img'] ?>" />
-                        <figcaption class="bg-light text-black"><?= $favoris['titre'] ?></figcaption>
                     </figure>
                 </button>
             </form>
