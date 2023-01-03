@@ -2,6 +2,11 @@
 
 // check if submitted with post
 if (isset($_POST['submit']) && !empty($_POST['titre']) && !empty($_POST['genre']) && !empty($_POST['descri']) && !empty($_POST['video'])) {
+    // $reg = "/^[a-zA-Z0-9_ -]{3,50}$/";
+    // if (preg_match($reg, $_POST['titre'])) {
+    //     echo "oui";
+
+
     // check if file was uploaded without errors
     if (isset($_FILES['img']) && $_FILES['img']['error'] == 0) {
         var_dump($_FILES['img']);
@@ -36,20 +41,20 @@ if (isset($_POST['submit']) && !empty($_POST['titre']) && !empty($_POST['genre']
                     $video = $_POST['video'];
                     var_dump($_POST);
                     $req = "INSERT INTO anime(titre,genre,descri,img,video) VALUES 
-                    (:titre,
-                    :genre,
-                    :descri,
-                    :img,
-                    :video)";
-                
-                $stmt = $bdd->prepare($req);
-                $stmt->bindValue(":titre", $titre, PDO::PARAM_STR);
-                $stmt->bindValue(":genre", $genre, PDO::PARAM_STR);
-                $stmt->bindValue(":descri", $descri, PDO::PARAM_STR);
-                $stmt->bindValue(":video", $video, PDO::PARAM_STR);
-                $stmt->bindValue(":img", $file_name_new , PDO::PARAM_STR);
-                $result = $stmt->execute();
-                $stmt->closeCursor();
+                        (:titre,
+                        :genre,
+                        :descri,
+                        :img,
+                        :video)";
+
+                    $stmt = $bdd->prepare($req);
+                    $stmt->bindValue(":titre", $titre, PDO::PARAM_STR);
+                    $stmt->bindValue(":genre", $genre, PDO::PARAM_STR);
+                    $stmt->bindValue(":descri", $descri, PDO::PARAM_STR);
+                    $stmt->bindValue(":video", $video, PDO::PARAM_STR);
+                    $stmt->bindValue(":img", $file_name_new, PDO::PARAM_STR);
+                    $result = $stmt->execute();
+                    $stmt->closeCursor();
 
                     if ($result) {
                         header('Location: ./exo7.php');
@@ -66,6 +71,10 @@ if (isset($_POST['submit']) && !empty($_POST['titre']) && !empty($_POST['genre']
     } else {
         echo 'File upload failed - CHMOD/Folder doesn\'t exist?';
     }
+
+    // } else {
+    //     echo "non";
+    // }
 }
 
 ?>
