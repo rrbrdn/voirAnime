@@ -4,7 +4,9 @@
 
 
 
-
+.card {
+  border: none !important;
+}
 
 .abs,
 h2:after,
