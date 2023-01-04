@@ -58,8 +58,8 @@ if (!empty($_SESSION['roleUser'])) {
             <ul class="navbar-nav me-auto">
                 <?= $nav ?>
             </ul>
-            <form class="d-flex" method="POST" action="./index.php">
-                <input class="form-control bg-transparent text-white me-sm-2" type="search" name="search" placeholder="Search" autocomplete="off">
+            <form class="d-flex" method="GET" action="./index.php">
+                <input id="search-text" class="form-control bg-transparent text-white me-sm-2" type="search" name="search" placeholder="Search" autocomplete="off">
                 <button id="btn" class="btn rounded-3 my-2 my-sm-0" type="submit" name="envoyer">Search</button>
             </form>
         </div>
