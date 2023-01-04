@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 define("URL", "http://localhost/voiranime/");
 
 if (!empty($_SESSION['roleUser'])) {

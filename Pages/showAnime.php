@@ -5,7 +5,6 @@ $req->execute();
 $myAnime = $req->fetchAll(PDO::FETCH_ASSOC);
 $req->closeCursor();
 
-
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +23,8 @@ $req->closeCursor();
 
 <body>
 
+  <?php require_once "./../src/component/comment.php" ?>
+
   <?php include './../src/component/navBar.php';
   include './../src/component/modal-connect.php';
   echo connect('./../src/component/connexion.php');
@@ -39,7 +40,6 @@ $req->closeCursor();
 
   <div class="container">
     <?php
-    // if (!empty($_POST['titre'])) {
     $idAnime = $_POST['titre'];
     foreach ($myAnime as $anime) {
       if ($anime['titre'] == $idAnime) {
@@ -59,46 +59,12 @@ $req->closeCursor();
     <?php
       }
     }
-    // } 
     ?>
   </div>
 
-
-  <?php
-    $bdd = new PDO('mysql:host=localhost;dbname=tp_crud', "root", "");
-
-    $req = "SELECT * FROM comment";
-    $stmt = $bdd->prepare($req);
-    $result = $stmt->execute();
-    $myComment = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $stmt->closeCursor();
-
-  if (isset($_POST['submit']) && !empty($_POST['comment'])) {
-
-
-    $user_id = $_SESSION['id'];
-    $comment = $_POST['comment'];
-
-
-    $req = "INSERT INTO comment(comment,user_id) VALUES 
-(:comment,:user_id)";
-
-    $stmt = $bdd->prepare($req);
-    $stmt->bindValue(":comment", $comment, PDO::PARAM_STR);
-    $stmt->bindValue(":user_id", $user_id, PDO::PARAM_INT);
-    $result = $stmt->execute();
-    $stmt->closeCursor();
-
-    var_dump($myComment);
-    var_dump($user_id);
-  }
-
-
-  ?>
-
   <div class="container">
     <h4 class="text-white">Laisser un commentaire</h4>
-    <form action="showAnime.php" method="post" class="w-50">
+    <form action="./../src/component/comment.php" method="post" class="w-50">
       <div class="form-group ">
         <textarea name="comment" class="form-control" id="exampleTextarea" rows="3" style="height: 92px;"></textarea>
       </div>
@@ -109,21 +75,22 @@ $req->closeCursor();
 
     <h4 class="text-white">Commentaires</h4>
   </div>
+
   <?php
-  
-    foreach ($myComment as $comment) { ?>
-      <div class="container">
-        <div class="toast show mt-5 w-50" role="alert" aria-live="assertive" aria-atomic="true">
-          <div class="toast-header">
-            <img class='rounded-circle' width='50' src=./../asset/img/<?= $_SESSION['img_profil'] ?>><strong class="me-auto ms-2"><?= $_SESSION['username'] ?></strong>
-            <small>11 mins ago</small>
-          </div>
-          <div class="toast-body">
-            <?= $comment['comment'] ?>
-          </div>
+  foreach ($myComment as $comment) { ?>
+    <div class="container">
+      <div class="toast show mt-5 w-50" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <img class='rounded-circle' width='50' src=./../asset/img/<?= $_SESSION['img_profil'] ?>><strong class="me-auto ms-2"><?= $_SESSION['username'] ?></strong>
+          <small>11 mins ago</small>
+        </div>
+        <div class="toast-body">
+          <?= $comment['comment'] ?>
         </div>
       </div>
+    </div>
   <?php } ?>
+
 
 
   <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
