@@ -40,9 +40,11 @@ $req->closeCursor();
 
   <div class="container">
     <?php
-    $idAnime = $_POST['titre'];
+    $idAnime = $_POST['id'];
     foreach ($myAnime as $anime) {
-      if ($anime['titre'] == $idAnime) {
+      if ($anime['id'] == $idAnime) {
+        // $_SESSION['id_anime'] = $idAnime;
+        var_dump($_SESSION);
     ?>
         <div class='p-3 text-white'>
           <h4 class="text-white"><?= $anime['titre'] ?></h4>
@@ -62,7 +64,7 @@ $req->closeCursor();
     ?>
   </div>
 
-  <div class="container">
+  <div class="container mt-5">
     <h4 class="text-white">Laisser un commentaire</h4>
     <form action="./../src/component/comment.php" method="post" class="w-50">
       <div class="form-group ">
@@ -72,24 +74,32 @@ $req->closeCursor();
         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
       </div>
     </form>
-
-    <h4 class="text-white">Commentaires</h4>
   </div>
 
   <?php
-  foreach ($myComment as $comment) { ?>
-    <div class="container">
-      <div class="toast show mt-5 w-50" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-          <img class='rounded-circle' width='50' src=./../asset/img/<?= $_SESSION['img_profil'] ?>><strong class="me-auto ms-2"><?= $_SESSION['username'] ?></strong>
-          <small>11 mins ago</small>
+  if (isset($_SESSION['id'])) {
+    echo "<h4 class='text-white container'>Commentaires</h4>";
+
+    var_dump($idAnime);
+    if ($myComment[0]['id_anime'] == $idAnime) {
+    foreach ($myComment as $comment) {
+  ?>
+        <div class="container">
+          <div class="toast show mt-5 w-50" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+              <img class='rounded-circle' width='50' src=./../asset/img/<?= $comment['img_profil'] ?>><strong class="me-auto ms-2"><?= $comment['username'] ?></strong>
+              <small>11 mins ago</small>
+            </div>
+            <div class="toast-body">
+              <?= $comment['comment'] ?>
+            </div>
+          </div>
         </div>
-        <div class="toast-body">
-          <?= $comment['comment'] ?>
-        </div>
-      </div>
-    </div>
-  <?php } ?>
+  <?php }
+    }
+  } ?>
+
+
 
 
 

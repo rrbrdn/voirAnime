@@ -31,7 +31,7 @@ $myFavoris = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt->closeCursor();
 
 
-
+session_start();
 ?>
 
 <!DOCTYPE html>

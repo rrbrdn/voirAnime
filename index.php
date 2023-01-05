@@ -5,15 +5,12 @@ $req->execute();
 $myAnime = $req->fetchAll(PDO::FETCH_ASSOC);
 $req->closeCursor();
 
-
-
-
 $req = $bdd->prepare("SELECT * FROM anime WHERE id IN (1,48,49)");
 $req->execute();
 $bigs3 = $req->fetchAll(PDO::FETCH_ASSOC);
 $req->closeCursor();
 
-
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +82,7 @@ $req->closeCursor();
           <form action="./Pages/showAnime.php" method="post">
             <button type="submit">
               <figure class="card">
-                <input hidden type="text" name="titre" value="<?= $big3['titre'] ?>">
+                <input hidden type="text" name="id" value="<?= $big3['id'] ?>">
                 <img src="./asset/img/<?= $big3['img'] ?>" />
                 <!-- <figcaption class="bg-light text-black"><?= $big3['titre'] ?></figcaption> -->
               </figure>
@@ -104,7 +101,7 @@ $req->closeCursor();
         <form action="./Pages/showAnime.php" method="post">
           <button type="submit">
             <figure class="card">
-              <input hidden type="text" name="titre" value="<?= $anime['titre'] ?>">
+              <input hidden type="text" name="id" value="<?= $anime['id'] ?>">
               <img src="./asset/img/<?= $anime['img'] ?>" />
               <!-- <figcaption class="bg-light opacity-75 text-black"><?= $anime['titre'] ?></figcaption> -->
             </figure>
