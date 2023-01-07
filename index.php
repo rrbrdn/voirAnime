@@ -79,15 +79,12 @@ session_start();
 
       <div class="cards">
         <?php foreach ($bigs3 as $big3) : ?>
-          <form action="./Pages/showAnime.php" method="post">
-            <button type="submit">
-              <figure class="card">
-                <input hidden type="text" name="id" value="<?= $big3['id'] ?>">
-                <img src="./asset/img/<?= $big3['img'] ?>" />
-                <!-- <figcaption class="bg-light text-black"><?= $big3['titre'] ?></figcaption> -->
-              </figure>
-            </button>
-          </form>
+          <a href="./Pages/showAnime.php?id_anime=<?= $big3['id'] ?>">
+            <figure class="card">
+              <img src="./asset/img/<?= $big3['img'] ?>" />
+              <!-- <figcaption class="bg-light text-black"><?= $big3['titre'] ?></figcaption> -->
+            </figure>
+          </a>
         <?php endforeach; ?>
       </div>
     </div>
@@ -97,17 +94,12 @@ session_start();
 
     <div class="cards">
       <?php foreach ($myAnime as $anime) : ?>
-
-        <form action="./Pages/showAnime.php" method="post">
-          <button type="submit">
-            <figure class="card">
-              <input hidden type="text" name="id" value="<?= $anime['id'] ?>">
-              <img src="./asset/img/<?= $anime['img'] ?>" />
-              <!-- <figcaption class="bg-light opacity-75 text-black"><?= $anime['titre'] ?></figcaption> -->
-            </figure>
-          </button>
-        </form>
-
+        <a href="./Pages/showAnime.php?id_anime=<?= $anime['id'] ?>">
+          <figure class="card">
+            <img src="./asset/img/<?= $anime['img'] ?>" />
+            <!-- <figcaption class="bg-light opacity-75 text-black"><?= $anime['titre'] ?></figcaption> -->
+          </figure>
+        </a>
       <?php endforeach; ?>
     </div>
   </div>
