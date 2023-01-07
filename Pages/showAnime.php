@@ -40,11 +40,9 @@ $req->closeCursor();
 
   <div class="container">
     <?php
-    $idAnime = $_POST['id'];
+    $idAnime = $_GET['id_anime'];
     foreach ($myAnime as $anime) {
       if ($anime['id'] == $idAnime) {
-        // $_SESSION['id_anime'] = $idAnime;
-        var_dump($_SESSION);
     ?>
         <div class='p-3 text-white'>
           <h4 class="text-white"><?= $anime['titre'] ?></h4>
@@ -79,9 +77,7 @@ $req->closeCursor();
   <?php
   if (isset($_SESSION['id'])) {
     echo "<h4 class='text-white container'>Commentaires</h4>";
-
-    var_dump($idAnime);
-    if ($myComment[0]['id_anime'] == $idAnime) {
+  
     foreach ($myComment as $comment) {
   ?>
         <div class="container">
@@ -96,8 +92,7 @@ $req->closeCursor();
           </div>
         </div>
   <?php }
-    }
-  } ?>
+    } ?>
 
 
 
