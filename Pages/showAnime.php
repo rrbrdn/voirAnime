@@ -1,9 +1,19 @@
 <?php
+$id_anime = $_GET['id_anime'];
 $bdd = new PDO('mysql:host=localhost;dbname=tp_crud', "root", "");
-$req = $bdd->prepare("SELECT * FROM anime");
+$req = $bdd->prepare("SELECT * FROM anime WHERE id = :id");
+$req->bindValue(":id", $id_anime, PDO::PARAM_INT);
 $req->execute();
 $myAnime = $req->fetchAll(PDO::FETCH_ASSOC);
 $req->closeCursor();
+
+$req = "SELECT * FROM user INNER JOIN comment ON user.id = comment.user_id INNER JOIN anime ON anime.id = comment.id_anime WHERE anime.id = :id_anime ORDER BY comment.id DESC";
+
+$stmt = $bdd->prepare($req);
+$stmt->bindValue(":id_anime", $id_anime, PDO::PARAM_INT);
+$result = $stmt->execute();
+$myComment = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmt->closeCursor();
 
 ?>
 
@@ -23,43 +33,27 @@ $req->closeCursor();
 
 <body>
 
-  <?php require_once "./../src/component/comment.php" ?>
-
-  <?php include './../src/component/navBar.php';
+  <?php require_once "./../src/component/comment.php";
+  include './../src/component/navBar.php';
   include './../src/component/modal-connect.php';
   echo connect('./../src/component/connexion.php');
   ?>
-
-
-
-  <a class="p-3 text-white" href="./../../voiranime/index.php"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-      <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-    </svg>
-  </a>
-
-
+  
   <div class="container">
-    <?php
-    $idAnime = $_GET['id_anime'];
-    foreach ($myAnime as $anime) {
-      if ($anime['id'] == $idAnime) {
-    ?>
-        <div class='p-3 text-white'>
-          <h4 class="text-white"><?= $anime['titre'] ?></h4>
-          <p><?= $anime['descri'] ?></p>
+    <?php foreach ($myAnime as $anime) : ?>
+      <div class='p-3 text-white'>
+        <h4 class="text-white"><?= $anime['titre'] ?></h4>
+        <p><?= $anime['descri'] ?></p>
 
-          <?php require_once "./../src/component/showAnime-component.php" ?>
-          <?= $btn ?>
-        </div>
-        <div class='d-flex justify-content-center p-3'>
+        <?php require_once "./../src/component/showAnime-component.php" ?>
+        <?= $btn ?>
+      </div>
+      <div class='d-flex justify-content-center p-3'>
 
-          <iframe class="col-lg-12" width="1100" height="430" src="<?= $anime['video'] ?>" . $video . frameborder="0" allowfullscreen></iframe>
+        <iframe class="col-lg-12" width="1100" height="430" src="<?= $anime['video'] ?>" . $video . frameborder="0" allowfullscreen></iframe>
 
-        </div>
-    <?php
-      }
-    }
-    ?>
+      </div>
+    <?php endforeach; ?>
   </div>
 
   <div class="container mt-5">
@@ -67,6 +61,7 @@ $req->closeCursor();
     <form action="./../src/component/comment.php" method="post" class="w-50">
       <div class="form-group ">
         <textarea name="comment" class="form-control" id="exampleTextarea" rows="3" style="height: 92px;"></textarea>
+        <input hidden type="text" name="id_anime" value="<?= $id_anime ?>">
       </div>
       <div class="d-flex justify-content-end mt-4">
         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
@@ -74,25 +69,25 @@ $req->closeCursor();
     </form>
   </div>
 
-  <?php
-  if (isset($_SESSION['id'])) {
-    echo "<h4 class='text-white container'>Commentaires</h4>";
-  
-    foreach ($myComment as $comment) {
-  ?>
-        <div class="container">
-          <div class="toast show mt-5 w-50" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-              <img class='rounded-circle' width='50' src=./../asset/img/<?= $comment['img_profil'] ?>><strong class="me-auto ms-2"><?= $comment['username'] ?></strong>
-              <small>11 mins ago</small>
-            </div>
-            <div class="toast-body">
-              <?= $comment['comment'] ?>
-            </div>
+  <?php if (isset($_SESSION['id'])) : ?>
+
+    <h4 class='text-white container'>Commentaires</h4>
+
+    <?php foreach ($myComment as $comment) : ?>
+      <div class="container">
+        <div class="toast show mt-5 w-50" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <img class='rounded-circle' width='50' src=./../asset/img/<?= $comment['img_profil'] ?>><strong class="me-auto ms-2"><?= $comment['username'] ?></strong>
+            <small>11 mins ago</small>
+          </div>
+          <div class="toast-body">
+            <?= $comment['comment'] ?>
           </div>
         </div>
-  <?php }
-    } ?>
+      </div>
+
+  <?php endforeach;
+  endif; ?>
 
 
 
