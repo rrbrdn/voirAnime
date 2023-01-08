@@ -32,6 +32,7 @@
                 <div class="d-flex justify-content-center p-1 ">
                     <button type="submit" id="btn" class="btn rounded-3 w-75" name='connect-btn'>Connexion</button>
                 </div>
+                <p>Pas de compte ? <a href="inscription.php" style="color:RGB(244, 117, 33);">Créer un compte</a></p>
             </fieldset>
         </form>
     </div>

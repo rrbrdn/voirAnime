@@ -35,12 +35,12 @@ $stmt->closeCursor();
 
   <?php require_once "./../src/component/comment.php";
   include './../src/component/navBar.php';
- 
+
   ?>
 
   <div class="container">
     <?php foreach ($myAnime as $anime) : ?>
-      <div class='p-3 text-white'>
+      <div class='p-3 mt-5 text-white'>
         <h4 class="text-white"><?= $anime['titre'] ?></h4>
         <p><?= $anime['descri'] ?></p>
       </div>
@@ -55,21 +55,16 @@ $stmt->closeCursor();
   </div>
   <?php if (!isset($_SESSION['id'])) : ?>
 
-    <p>toto</p>
-    <p>toto</p>
-    <p>toto</p>
-    <p>toto</p>
-    <p>toto</p>
-    <p>toto</p>
-    <p>toto</p>
-    <p>toto</p>
-    <p>toto</p>
-    <p>toto</p>
-    <p>toto</p>
-    <p>toto</p>
-    <p>toto</p>
-    <p>toto</p>
-    <p>toto</p>
+    <div class="container mt-5">
+      <div class="mb-3 pt-3" style="max-width: 30rem;border: 0.0625rem dashed #dadada;">
+        <div class="text-white d-flex justify-content-center">
+          <h4 class="text-white">Compte Requis</h4>
+        </div>
+        <div class="text-white d-flex justify-content-center">
+          <p><a href="./../src/component/login.php" style="color:RGB(244, 117, 33);">Se connecter </a> ou <a href="./../src/component/inscription.php" style="color:RGB(244, 117, 33);">Créer un compte</a> pour commenter</p>
+        </div>
+      </div>
+    </div>
 
   <?php else : ?>
     <div class="container mt-5">
@@ -104,7 +99,7 @@ $stmt->closeCursor();
 
 
 
-  
+
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous">

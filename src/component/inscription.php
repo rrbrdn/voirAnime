@@ -136,6 +136,7 @@ if (isset($_POST['submit']) && !empty($_POST['username']) && !empty($_POST['emai
                 <div class="d-flex justify-content-center p-1 ">
                     <button type="submit" id="btn" class="btn rounded-3 w-75" name="submit">Crée un compte</button>
                 </div>
+                <p>Vous avez déjà un compte ? <a href="login.php" style="color:RGB(244, 117, 33);">Se connecter</a></p>
             </fieldset>
         </form>
     </div>
