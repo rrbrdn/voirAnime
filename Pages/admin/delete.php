@@ -13,5 +13,5 @@ $result = $stmt->execute();
 $stmt->closeCursor();
 
 if ($result) {
-    header('Location: exo7.php');
+    header('Location: admin.php');
 }

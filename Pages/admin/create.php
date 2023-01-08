@@ -57,7 +57,7 @@ if (isset($_POST['submit']) && !empty($_POST['titre']) && !empty($_POST['genre']
                     $stmt->closeCursor();
 
                     if ($result) {
-                        header('Location: ./exo7.php');
+                        header('Location: ./admin.php');
                     }
                 } else {
                     echo 'File upload failed - CHMOD/Folder doesn\'t exist?';
@@ -102,11 +102,11 @@ if (isset($_POST['submit']) && !empty($_POST['titre']) && !empty($_POST['genre']
                     Anime
                 </div>
                 <div class="p-2">
-                    <a href="./exo7.php"><button type="button" class="btn btn-outline-dark btn-sm">back</button></a>
+                    <a href="./admin.php"><button type="button" class="btn btn-outline-dark btn-sm">back</button></a>
                 </div>
             </div>
 
-            <form action="./exo7-create.php" method="post" enctype="multipart/form-data">
+            <form action="./create.php" method="post" enctype="multipart/form-data">
                 <fieldset>
                     <div class="form-group p-3">
                         <label class="col-form-label mt-4" for="inputDefault">Titre</label>

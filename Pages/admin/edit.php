@@ -42,11 +42,11 @@ var_dump($anime[0]['titre']);
                     Anime
                 </div>
                 <div class="p-2">
-                    <a href="./exo7.php"><button type="button" class="btn btn-outline-dark btn-sm">back</button></a>
+                    <a href="./admin.php"><button type="button" class="btn btn-outline-dark btn-sm">back</button></a>
                 </div>
             </div>
 
-            <form action="./exo7-editValid.php" method="post" enctype="multipart/form-data">
+            <form action="./editValid.php" method="post" enctype="multipart/form-data">
                 <fieldset>
                     <div class="form-group p-3">
                         <input type="text" class="form-control" name="titre" value="<?=$anime[0]['titre']?>">

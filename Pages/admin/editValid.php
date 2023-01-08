@@ -48,7 +48,7 @@ if (isset($_POST['submit']) && !empty($_POST['titre']) && !empty($_POST['genre']
 
 
                     if ($result) {
-                        header('Location: exo7.php');
+                        header('Location: admin.php');
                     }
                 } else {
                     echo 'File upload failed - CHMOD/Folder doesn\'t exist?';

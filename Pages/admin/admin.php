@@ -31,7 +31,7 @@ $req->closeCursor();
                             class="btn btn-outline-dark btn-sm">Back</button></a>
                 </div>
                 <div class="p-2">
-                    <a href="./exo7-create.php"><button type="button"
+                    <a href="./create.php"><button type="button"
                             class="btn btn-outline-dark btn-sm">Ajouter</button></a>
                 </div>
             </div>
@@ -49,7 +49,7 @@ $req->closeCursor();
                             </div>
                         </div>
                         <div class="p-3 d-flex justify-content-between">
-                            <form action="./exo7-edit.php" method="post">
+                            <form action="./edit.php" method="post">
                                 <input hidden type="text" name="animeID" value="<?= $anime['id']?>">
                                 <button class="btn" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16"
                                         height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
@@ -58,7 +58,7 @@ $req->closeCursor();
                                     </svg>
                                 </button>
                             </form>
-                            <form action="./exo7-delete.php" method="post"
+                            <form action="./delete.php" method="post"
                                 onSubmit="return confirm('êtes-vous certain ?')">
                                 <input hidden type="text" name="animeID" value="<?= $anime['id']?>">
                                 <button class="btn" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16"

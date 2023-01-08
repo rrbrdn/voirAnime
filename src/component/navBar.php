@@ -6,7 +6,7 @@ if (!empty($_SESSION['roleUser'])) {
     if ($_SESSION['roleUser'] == 'admin') {
 
         $nav = "<li class='nav-item'>
-                    <a class='nav-link' href='" . URL . "./Pages/admin/exo7.php'>admin</a>
+                    <a class='nav-link' href='" . URL . "./Pages/admin/admin.php'>admin</a>
                 </li> 
                 <li class='nav-item'>
                     <a class='nav-link' href='" . URL . "./src/component/deco.php'>deco</a>
