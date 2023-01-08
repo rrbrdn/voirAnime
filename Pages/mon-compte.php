@@ -6,9 +6,7 @@ if (!empty($_POST['idUser']) && !empty($_POST['idAnime'])) {
     $id_anime = $_POST['idAnime'];
 
 
-    $req = "INSERT INTO favoris(id_user,id_anime) VALUES 
-(:id_user,
-:id_anime)";
+    $req = "INSERT INTO favoris(id_user,id_anime) VALUES (:id_user,:id_anime)";
 
     $stmt = $bdd->prepare($req);
     $stmt->bindValue(":id_user", $id_user, PDO::PARAM_STR);
