@@ -36,10 +36,10 @@ if (!empty($_SESSION['roleUser'])) {
     }
 } else {
     $nav = "    <li class='nav-item'>
-                    <a class='nav-link' id='connect' href='#'>Connexion</a>
+                    <a class='nav-link' href='" . URL . "./src/component/login.php'>Connexion</a>
                 </li>
                 <li class='nav-item'>
-                    <a class='nav-link' id='inscription' href='" . URL . "./src/component/inscription.php'>Inscription</a>
+                    <a class='nav-link' href='" . URL . "./src/component/inscription.php'>Inscription</a>
                 </li>";
 }
 

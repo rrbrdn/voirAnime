@@ -52,8 +52,6 @@ session_start();
     <?php 
 
 include './../src/component/navBar.php'; 
-include './../src/component/modal-connect.php';
-echo connect('./../src/component/connexion.php');
 
 // var_dump($_POST);
 // var_dump($_SESSION);
@@ -94,7 +92,6 @@ echo connect('./../src/component/connexion.php');
     </div>
 
 
-    <script src="./../asset/js/connect.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
     </script>
