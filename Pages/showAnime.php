@@ -38,41 +38,54 @@ $stmt->closeCursor();
   include './../src/component/modal-connect.php';
   echo connect('./../src/component/connexion.php');
   ?>
-  
+
   <div class="container">
     <?php foreach ($myAnime as $anime) : ?>
       <div class='p-3 text-white'>
         <h4 class="text-white"><?= $anime['titre'] ?></h4>
         <p><?= $anime['descri'] ?></p>
-
+      </div>
+      <div class='d-flex justify-content-center p-3'>
+        <iframe class="col-lg-12" width="1100" height="430" src="<?= $anime['video'] ?>" . $video . frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="mt-5">
         <?php require_once "./../src/component/showAnime-component.php" ?>
         <?= $btn ?>
       </div>
-      <div class='d-flex justify-content-center p-3'>
-
-        <iframe class="col-lg-12" width="1100" height="430" src="<?= $anime['video'] ?>" . $video . frameborder="0" allowfullscreen></iframe>
-
-      </div>
     <?php endforeach; ?>
   </div>
+  <?php if (!isset($_SESSION['id'])) : ?>
 
-  <div class="container mt-5">
-    <h4 class="text-white">Laisser un commentaire</h4>
-    <form action="./../src/component/comment.php" method="post" class="w-50">
-      <div class="form-group ">
-        <textarea name="comment" class="form-control" id="exampleTextarea" rows="3" style="height: 92px;"></textarea>
-        <input hidden type="text" name="id_anime" value="<?= $id_anime ?>">
-      </div>
-      <div class="d-flex justify-content-end mt-4">
-        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </form>
-  </div>
+    <p>toto</p>
+    <p>toto</p>
+    <p>toto</p>
+    <p>toto</p>
+    <p>toto</p>
+    <p>toto</p>
+    <p>toto</p>
+    <p>toto</p>
+    <p>toto</p>
+    <p>toto</p>
+    <p>toto</p>
+    <p>toto</p>
+    <p>toto</p>
+    <p>toto</p>
+    <p>toto</p>
 
-  <?php if (isset($_SESSION['id'])) : ?>
-
+  <?php else : ?>
+    <div class="container mt-5">
+      <h4 class="text-white">Laisser un commentaire</h4>
+      <form action="./../src/component/comment.php" method="post" class="w-50">
+        <div class="form-group ">
+          <textarea name="comment" class="form-control" id="exampleTextarea" rows="3" style="height: 92px;"></textarea>
+          <input hidden type="text" name="id_anime" value="<?= $id_anime ?>">
+        </div>
+        <div class="d-flex justify-content-end mt-4">
+          <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
     <h4 class='text-white container'>Commentaires</h4>
-
     <?php foreach ($myComment as $comment) : ?>
       <div class="container">
         <div class="toast show mt-5 w-50" role="alert" aria-live="assertive" aria-atomic="true">
@@ -85,9 +98,8 @@ $stmt->closeCursor();
           </div>
         </div>
       </div>
-
-  <?php endforeach;
-  endif; ?>
+    <?php endforeach; ?>
+  <?php endif; ?>
 
 
 

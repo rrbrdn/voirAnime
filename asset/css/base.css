@@ -1,11 +1,15 @@
 body {
-    background-color: black;
+  background-color: black;
 }
 #nav {
-    background-color: RGB(35, 37, 43);
-  }
+  background-color: RGB(35, 37, 43);
+}
 
-  #titre {
-    color: RGB(244, 117, 33);
-  }
+#titre {
+  color: RGB(244, 117, 33);
+}
 
+#btn {
+  background-color: RGB(244, 117, 33);
+  color: RGB(35, 37, 43);
+}
