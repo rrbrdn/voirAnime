@@ -17,12 +17,8 @@ if (!empty($_SESSION['roleUser'])) {
         <li class='nav-item dropdown'>
           <a class='nav-link dropdown-toggle' data-bs-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'> 
             <img class='rounded-circle' width='50' src='" . URL . "./asset/img/" . $_SESSION['img_profil'] . "'></a>
-          <div class='dropdown-menu'>
-            <form action='" . URL . "./Pages/mon-compte.php' method='post'>
-                <a class='dropdown-item'>Favoris<input hidden name='idUser' value="  . $_SESSION['id'] . ">
-                <button class='btn' type='submit'></button>
-                </a>
-            </form>
+            <div class='dropdown-menu'>
+                <a class='dropdown-item' href='" . URL . "./Pages/mon-compte.php?idUser=".$_SESSION['id']."'>Mon profil</a>
             <div class='dropdown-divider'></div>
             <a class='dropdown-item' href='" . URL . "./src/component/deco.php'>Deconnexion</a>
             <form action='" . URL . "./src/component/delete-compte.php' method='post'>

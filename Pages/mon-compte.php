@@ -19,7 +19,7 @@ if (!empty($_POST['idUser']) && !empty($_POST['idAnime'])) {
     }
 }
 
-$id_user = $_POST['idUser'];
+$id_user = $_GET['idUser'];
 
 $req = "SELECT * FROM anime INNER JOIN favoris ON anime.id = favoris.id_anime WHERE id_user = :id";
 $stmt = $bdd->prepare($req);
@@ -64,7 +64,7 @@ session_start();
         <h2><strong>Mes favoris</strong></h2>
         <div class="cards">
             <?php foreach ($myFavoris as $favoris) : ?>
-                <?php if ($_SESSION['id'] == $_POST['idUser']) { ?>
+                <?php if ($_SESSION['id'] == $_GET['idUser']) { ?>
                     <a href="./showAnime.php?id_anime=<?= $favoris['id'] ?>">
                         <figure class="card">
                             <input hidden type="text" name="titre" value="<?= $favoris['titre'] ?>">
@@ -84,6 +84,46 @@ session_start();
             <?php endforeach; ?>
         </div>
     </div>
+
+
+    <!-- <div class="wrapper">
+        <h2><strong>Mon Compte</strong></h2>
+
+        <div class="container mt-5">
+            <div class="d-flex">
+                <img src="./../asset/img/<?= $_SESSION['img_profil'] ?>" width="150" class="rounded-circle border border-2">
+                <div class="d-flex align-items-center ms-3">
+                    <h4 class="text-white"><?= $_SESSION['username'] ?></h4>
+                </div>
+            </div>
+
+            <style>
+                .mt-5 {
+                    background-color: RGB(35, 37, 43);
+                    color: RGB(244, 117, 33);
+                }
+            </style>
+            <div class="mt-5 text-white row">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#home" aria-selected="true" role="tab">Home</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link text-white" data-bs-toggle="tab" href="#profile" aria-selected="false" role="tab" tabindex="-1">Profile</a>
+                    </li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade active show" id="home" role="tabpanel">
+                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel">
+                        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
