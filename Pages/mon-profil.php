@@ -24,7 +24,7 @@ session_start();
     <div class="wrapper">
         <h2><strong>Mon profil</strong></h2>
 
-        <div class="container mt-5">
+        <div class="container mt-5" id="coucou">
             <div class="d-flex">
                 <img src="./../asset/img/<?= $_SESSION['img_profil'] ?>" width="150" class="rounded-circle border border-2">
                 <div class="d-flex align-items-center ms-3">
@@ -33,18 +33,18 @@ session_start();
             </div>
 
             <style>
-                .mt-5 {
+                #coucou {
                     background-color: RGB(35, 37, 43);
                     color: RGB(244, 117, 33);
                 }
             </style>
-            <div class="mt-5 text-white row">
+            <div class="mt-5 text-white row" id="coucou">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" data-bs-toggle="tab" href="#home" aria-selected="true" role="tab">Home</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link text-white" data-bs-toggle="tab" href="#profile" aria-selected="false" role="tab" tabindex="-1">Profile</a>
+                        <a class="nav-link" data-bs-toggle="tab" href="#profile" aria-selected="false" role="tab" tabindex="-1">Profile</a>
                     </li>
                 </ul>
                 <div id="myTabContent" class="tab-content">
