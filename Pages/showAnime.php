@@ -1,4 +1,5 @@
 <?php
+session_start();
 $id_anime = $_GET['id_anime'];
 $bdd = new PDO('mysql:host=localhost;dbname=tp_crud', "root", "");
 $req = $bdd->prepare("SELECT * FROM anime WHERE id = :id");
@@ -7,10 +8,14 @@ $req->execute();
 $myAnime = $req->fetchAll(PDO::FETCH_ASSOC);
 $req->closeCursor();
 
-$req = "SELECT * FROM user INNER JOIN comment ON user.id = comment.user_id INNER JOIN anime ON anime.id = comment.id_anime WHERE anime.id = :id_anime ORDER BY comment.id DESC";
+// $req = "SELECT * FROM user INNER JOIN comment ON user.id = comment.user_id INNER JOIN anime ON anime.id = comment.id_anime WHERE anime.id = :id_anime ORDER BY comment.id DESC";
+$user_id = $_SESSION['id'];
+var_dump($user_id);
+$req = "SELECT * FROM comment WHERE id_anime = :id_anime ORDER BY id DESC";
 
 $stmt = $bdd->prepare($req);
 $stmt->bindValue(":id_anime", $id_anime, PDO::PARAM_INT);
+// $stmt->bindValue(":user_id", $user_id, PDO::PARAM_INT);
 $result = $stmt->execute();
 $myComment = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt->closeCursor();
@@ -33,7 +38,7 @@ $stmt->closeCursor();
 
 <body>
 
-  <?php require_once "./../src/component/comment.php";
+  <?php 
   include './../src/component/navBar.php';
 
   ?>
@@ -84,7 +89,7 @@ $stmt->closeCursor();
       <div class="container">
         <div class="toast show mt-5 w-50" role="alert" aria-live="assertive" aria-atomic="true">
           <div class="toast-header">
-            <img class='rounded-circle' width='50' src=./../asset/img/<?= $comment['img_profil'] ?>><strong class="me-auto ms-2"><?= $comment['username'] ?></strong>
+            <img class='rounded-circle' width='50' src=./../asset/img/<?= $_SESSION['img_profil'] ?>><strong class="me-auto ms-2"><?= $_SESSION['username'] ?></strong>
             <small>11 mins ago</small>
           </div>
           <div class="toast-body">
