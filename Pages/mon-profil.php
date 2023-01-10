@@ -19,7 +19,7 @@ session_start();
 
 <body>
 
-    <?php include './../src/component/navBar.php';?>
+    <?php include './../src/component/navBar.php'; ?>
 
     <div class="wrapper">
         <h2><strong>Mon profil</strong></h2>
@@ -38,21 +38,45 @@ session_start();
                     color: RGB(244, 117, 33);
                 }
             </style>
-            <div class="mt-5 text-white row" id="coucou">
+            <div class="mt-5" id="coucou">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active" data-bs-toggle="tab" href="#home" aria-selected="true" role="tab">Home</a>
+                        <a class="nav-link active" data-bs-toggle="tab" href="#email" aria-selected="true" role="tab">Changer l'adresse e-mail</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" data-bs-toggle="tab" href="#profile" aria-selected="false" role="tab" tabindex="-1">Profile</a>
+                        <a class="nav-link" data-bs-toggle="tab" href="#mdp" aria-selected="false" role="tab" tabindex="-1">Profile</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="tab" href="#supprimer" aria-selected="false" role="tab" tabindex="-1">Supprimer mon profil</a>
                     </li>
                 </ul>
                 <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane fade active show" id="home" role="tabpanel">
-                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                    <div class="tab-pane fade active show" id="email" role="tabpanel">
+                        <div class="m-3">
+                            <small class="text-white">Adresse e-mail actuelle</small>
+                            <p><?= $_SESSION['email'] ?></p>
+                        </div>
+                        <form action="./../src/component/edit-user.php" method="post" enctype="multipart/form-data">
+                            <fieldset>
+                                <div class="form-group p-3">
+                                    <input type="text" class="form-control bg-transparent border border-2 w-25" name="email">
+                                </div>
+                                <input hidden type="text" name="idUser" value="<?= $_SESSION['id'] ?>">
+                                <hr>
+                                <div class="d-flex justify-content-end p-3">
+                                    <button type="submit" class="btn btn-primary" name="submit">Edit</button>
+                                </div>
+                            </fieldset>
+                        </form>
                     </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel">
-                        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+                    <div class="tab-pane fade" id="mdp" role="tabpanel">
+                        <p>mdp</p>
+                    </div>
+                    <div class="tab-pane fade" id="supprimer" role="tabpanel">
+                        <form action='./../src/component/delete-compte.php' method='post'>
+                            <input hidden name='idUser' value="<?= $_SESSION['id'] ?>">
+                            <button class='btn' type='submit'>Supprimer</button>
+                        </form>
                     </div>
                 </div>
             </div>
