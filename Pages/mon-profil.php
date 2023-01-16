@@ -1,7 +1,14 @@
 <?php
+$bdd = new PDO('mysql:host=localhost;dbname=tp_crud', "root", "");
 
 session_start();
 
+$userId = $_SESSION['id'];
+$req = $bdd->prepare("SELECT * FROM user WHERE id = :id");
+$req->bindValue(":id", $userId, PDO::PARAM_INT);
+$req->execute();
+$myUser = $req->fetchAll(PDO::FETCH_ASSOC);
+$req->closeCursor();
 ?>
 
 <!DOCTYPE html>
@@ -26,9 +33,9 @@ session_start();
 
         <div class="container mt-5" id="coucou">
             <div class="d-flex">
-                <img src="./../asset/img/<?= $_SESSION['img_profil'] ?>" width="150" class="rounded-circle border border-2">
+                <img src="./../asset/img/<?= $myUser[0]['img_profil'] ?>" width="150" class="rounded-circle border border-2">
                 <div class="d-flex align-items-center ms-3">
-                    <h4 class="text-white"><?= $_SESSION['username'] ?></h4>
+                    <h4 class="text-white"><?= $myUser[0]['username'] ?></h4>
                 </div>
             </div>
 
@@ -38,6 +45,7 @@ session_start();
                     color: RGB(244, 117, 33);
                 }
             </style>
+
             <div class="mt-5" id="coucou">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -54,17 +62,17 @@ session_start();
                     <div class="tab-pane fade active show" id="email" role="tabpanel">
                         <div class="m-3">
                             <small class="text-white">Adresse e-mail actuelle</small>
-                            <p><?= $_SESSION['email'] ?></p>
+                            <p><?= $myUser[0]['email'] ?></p>
                         </div>
                         <form action="./../src/component/edit-user.php" method="post" enctype="multipart/form-data">
                             <fieldset>
                                 <div class="form-group p-3">
                                     <input type="text" class="form-control bg-transparent border border-2 w-25" name="email">
                                 </div>
-                                <input hidden type="text" name="idUser" value="<?= $_SESSION['id'] ?>">
+                                <input hidden type="text" name="idUser" value="<?= $myUser[0]['id'] ?>">
                                 <hr>
                                 <div class="d-flex justify-content-end p-3">
-                                    <button type="submit" class="btn btn-primary" name="submit">Edit</button>
+                                    <button type="submit" class="btn btn-primary" name="submit">Changer</button>
                                 </div>
                             </fieldset>
                         </form>
@@ -74,7 +82,7 @@ session_start();
                     </div>
                     <div class="tab-pane fade" id="supprimer" role="tabpanel">
                         <form action='./../src/component/delete-compte.php' method='post'>
-                            <input hidden name='idUser' value="<?= $_SESSION['id'] ?>">
+                            <input hidden name='idUser' value="<?= $myUser[0]['id'] ?>">
                             <button class='btn' type='submit'>Supprimer</button>
                         </form>
                     </div>
@@ -90,5 +98,4 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous">
     </script>
 </body>
-
 </html>

@@ -16,5 +16,5 @@ $statement->closeCursor();
 
 
 if ($result) {
-    header('Location: ./../../index.php');
+    header('Location: ./../../Pages/mon-profil.php');
 }
